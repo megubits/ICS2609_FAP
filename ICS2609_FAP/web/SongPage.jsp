@@ -4,7 +4,7 @@
     Author     : Isha Quingquing
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.io.*, java.util.*" contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,6 +12,20 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1><%=session.getAttribute("title")%></h1>
+        <h2><%=session.getAttribute("artist")%></h2>
+        <% try {
+                File songLyrics = new File("C:/Users/Isha Quingquing/Documents/NetBeansProjects/ICS2609_FAP/SongLyrics/" + session.getAttribute("songNo") + ".txt");
+                Scanner reader = new Scanner(songLyrics);
+
+                while (reader.hasNextLine()) {
+                    String data = reader.nextLine();%>
+        <p align="center"><font color="orange"> <%= data%></font></p>
+            <%};
+
+                    reader.close();
+                } catch (FileNotFoundException e) {
+                    System.out.println("An error occured.");
+                }%>
     </body>
 </html>

@@ -12,6 +12,18 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <form action="LoginServlet" method="post">
+                <label>Username: </label>   
+                <input type="text" placeholder="Enter Username" name="username" required><br><br>  
+                <label>Password: </label>
+                <input type="password" placeholder="Enter Password" name="password" required><br><br>
+                <input type="submit" align="center" value="Login">               
+        </form>
+        <form action="SongDisplayer" action="get">
+            <input type="submit" align="center" name="song" value="1">
+        <!-- </form>
+        <form action="SongDisplayer" action="get">-->
+            <input type="submit" align="center" name="song" value="2">
+        </form>
     </body>
 </html>
