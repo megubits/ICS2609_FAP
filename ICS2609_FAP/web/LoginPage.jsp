@@ -19,11 +19,11 @@
                 <input type="password" placeholder="Enter Password" name="password" required><br><br>
                 <input type="submit" align="center" value="Login">               
         </form>
-        <form action="SongDisplayer" action="get">
-            <input type="submit" align="center" name="song" value="1">
+        <form action="SongLink" action="get">
+            <input type="submit" align="center" name="songNo" value="1">
         <!-- </form>
         <form action="SongDisplayer" action="get">-->
-            <input type="submit" align="center" name="song" value="2">
+            <input type="submit" align="center" name="songNo" value="2">
         </form>
     </body>
 </html>

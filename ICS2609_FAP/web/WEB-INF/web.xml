@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-     
     <context-param>
         <param-name>cryptoKey</param-name>
         <param-value>ics_2609ics_2609</param-value>
@@ -9,36 +8,34 @@
         <param-name>cryptoCipher</param-name>
         <param-value>AES/ECB/PKCS5Padding</param-value>
     </context-param>
-    
     <context-param>
         <param-name>jdbcClassName</param-name>
         <param-value>org.apache.derby.jdbc.ClientDriver</param-value>
     </context-param>
-    <context-param>   
+    <context-param>
         <param-name>dbUserName</param-name>
         <param-value>app</param-value>
     </context-param>
-    <context-param>    
+    <context-param>
         <param-name>dbPassword</param-name>
         <param-value>app</param-value>
     </context-param>
-    <context-param>    
+    <context-param>
         <param-name>jdbcDriverURL</param-name>
         <param-value>jdbc:derby</param-value>
     </context-param>
-    <context-param>    
+    <context-param>
         <param-name>dbHostName</param-name>
         <param-value>localhost</param-value>
     </context-param>
-    <context-param>    
+    <context-param>
         <param-name>dbPort</param-name>
         <param-value>1527</param-value>
     </context-param>
-    <context-param>    
+    <context-param>
         <param-name>databaseName</param-name>
         <param-value>VoiceUSERS</param-value>
     </context-param>
-    
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>controllers.LoginServlet</servlet-class>
@@ -54,6 +51,14 @@
     <servlet>
         <servlet-name>SongDisplayer</servlet-name>
         <servlet-class>controllers.SongDisplayer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SongNav</servlet-name>
+        <servlet-class>controllers.SongNav</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SongLink</servlet-name>
+        <servlet-class>controllers.SongLink</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -73,6 +78,14 @@
     <servlet-mapping>
         <servlet-name>SongDisplayer</servlet-name>
         <url-pattern>/SongDisplayer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SongNav</servlet-name>
+        <url-pattern>/SongNav</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SongLink</servlet-name>
+        <url-pattern>/SongLink</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
