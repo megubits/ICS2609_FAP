@@ -20,12 +20,22 @@
 
                 while (reader.hasNextLine()) {
                     String data = reader.nextLine();%>
-        <p align="center"><font color="orange"> <%= data%></font></p>
+                    <p align="center"><font color="orange"> <%= data%></font></p>
             <%};
 
                     reader.close();
                 } catch (FileNotFoundException e) {
                     System.out.println("An error occured.");
                 }%>
+        <form action="SongLink" action="get">           
+            <input type="submit" align="center" name="songNo" value="1">
+            <input type="submit" align="center" name="songNo" value="2">
+            <input type="submit" align="center" name="songNo" value="3"> 
+        </form>
+        
+        <form action="SongNav" action="get">
+            <input type="submit" align="center" name="songDirect" value="goback">
+            <input type="submit" align="center" name="songDirect" value="goforward">
+        </form>
     </body>
 </html>

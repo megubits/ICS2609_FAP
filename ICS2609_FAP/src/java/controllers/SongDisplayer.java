@@ -5,9 +5,11 @@
 package controllers;
 
 import java.io.*;
+import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.sql.*;
+
 /**
  *
  * @author Isha Quingquing
@@ -15,6 +17,8 @@ import java.sql.*;
 public class SongDisplayer extends HttpServlet {
 
     Connection conn;
+    HashMap<Integer, String> history = new HashMap<>();
+    int historyCount = 0;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -45,31 +49,77 @@ public class SongDisplayer extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        HttpSession session = request.getSession();
-        String song = request.getParameter("song");
-        session.setAttribute("songNo", song);
 
-        if (song != null) {
-            try{
+        HttpSession session = request.getSession();
+        String songNo = (String) session.getAttribute("songNo");
+
+        if ((Boolean) session.getAttribute("nav") == true && (Boolean) session.getAttribute("link") == false) {
+
+            if ("goback".equals(session.getAttribute("songDirect"))) {
+                if (historyCount == 1) {
+                    System.out.println("nothing backwards!");
+                } else {
+                    historyCount--;
+                    session.setAttribute("songNo", history.get(historyCount));
+                    System.out.println("going back " + (String) session.getAttribute("songDirect"));
+                }
+            } else if ("goforward".equals(session.getAttribute("songDirect"))) {
+                if (historyCount == history.size()) {
+                    System.out.println("nothing forwards");
+                } else {
+                    historyCount++;
+                    session.setAttribute("songNo", history.get(historyCount));
+                    System.out.println("going forward " + (String) session.getAttribute("songDirect"));
+                }
+            }
+
+            System.out.println("nav status: " + session.getAttribute("nav")
+                    + "\n link status: " + session.getAttribute("link")
+                    + "\n songDirect status: " + session.getAttribute("songDirect"));
+
+        } else if ((Boolean) session.getAttribute("link") == true && (Boolean) session.getAttribute("nav") == false) {
+
+            if (historyCount != history.size()) {
+                int loopHistoryCount = historyCount;
+                int loopHistorySize = history.size();
+
+                while (loopHistoryCount != loopHistorySize) {
+                    loopHistoryCount++;
+                    history.remove(loopHistoryCount);
+                }
+
+            }
+
+            historyCount++;
+            history.put(historyCount, songNo);
+            session.setAttribute("songNo", songNo);
+
+            System.out.println("nav status: " + session.getAttribute("nav")
+                    + "\n link status: " + session.getAttribute("link"));
+        } else {
+            System.out.println("error");
+        }
+
+        try {
             if (conn != null) {
                 String querysong = "SELECT TITLE, ARTIST FROM SONGLIST WHERE NUMBER = ?";
                 PreparedStatement pssongdet = conn.prepareStatement(querysong);
-                pssongdet.setString(1, song);
+                pssongdet.setString(1, (String) session.getAttribute("songNo"));
                 ResultSet details = pssongdet.executeQuery();
-                
-                while (details.next()){
-                    session.setAttribute("title",details.getString("TITLE"));
+
+                while (details.next()) {
+                    session.setAttribute("title", details.getString("TITLE"));
                     session.setAttribute("artist", details.getString("ARTIST"));
                 }
             }
-            } catch (SQLException sqle) {
-                    System.out.println("no connection :(");
-                }
+        } catch (SQLException sqle) {
+            System.out.println("no connection :(");
         }
-        
+
+        System.out.println("Where are we?: " + historyCount
+                + "\n Song Playing: " + session.getAttribute("songNo")
+                + "\n HashMap Status: " + history);
         response.sendRedirect("SongPage.jsp");
-        
     }
 
 }
