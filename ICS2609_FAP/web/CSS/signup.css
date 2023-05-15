@@ -1,0 +1,118 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : May 12, 2023, 3:35:50 PM
+    Author     : lenovo
+*/
+
+body {
+    margin:0;
+    height:100%;
+}
+
+.bothside {
+    width: 100%;
+    height: 100vh;
+}
+
+.leftbody{
+    position: absolute;
+    left: 0px;
+    width: 50%;
+    height: 100vh;
+    background-image: url('../IMG/signup1.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: saturate(100%) sepia(80%) saturate(567%) hue-rotate(154deg) brightness(90%) contrast(97%);
+}
+
+.rightbody {
+    position: absolute;
+    right: 0px;
+    width: 50%;
+    height: 100vh;
+    background-image: linear-gradient(180deg, #ffffff, #ffffff);
+}
+
+/*text*/
+
+h3 {
+    font-size: 50px;
+    font-family: sans-serif;
+    color: #0a4d68;
+    line-height: 70px;
+    vertical-align: middle;
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+
+/*forms*/
+
+fieldset {
+    border: none;
+    padding-left: 60px;
+}
+
+label {
+    display: block;
+    width: auto;
+    position: relative;
+    margin-left: 170px;
+    margin-bottom: 20px;
+
+    font-size: 17px;
+    font-family: sans-serif;
+    color: #0a4d68;
+    vertical-align: middle;
+    text-align: justify;
+}
+
+#username, #reusername, #password, #repassword, #answer {
+    display: block;
+    width: 295px;
+    margin-right: auto;
+    color: #0a4d68;
+}
+
+
+/*button*/
+
+.submit {
+    display: block;
+    width: 295px;
+    height: 30px;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: 235px;
+    font-size: 20px;
+    background-color: #05bfdb;
+    border-color: transparent;
+    min-width: 295px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+.submit:hover {
+    background-color: #00ffca;
+    color: #0a4d68;
+}
+
+
+/*captcha*/
+
+.captcha {
+    border: 5px solid #088395;
+    display: inline-block;
+}
+
+.center {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
