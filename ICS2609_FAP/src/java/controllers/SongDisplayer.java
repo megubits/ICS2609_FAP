@@ -119,6 +119,7 @@ public class SongDisplayer extends HttpServlet {
         System.out.println("Where are we?: " + historyCount
                 + "\n Song Playing: " + session.getAttribute("songNo")
                 + "\n HashMap Status: " + history);
+        
         response.sendRedirect("SongPage.jsp");
     }
 

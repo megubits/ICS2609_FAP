@@ -1,0 +1,47 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : May 12, 2023, 10:47:24 PM
+    Author     : lenovo
+*/
+
+.gallery {
+    display: flex;
+    margin: auto;
+    margin-bottom: 50px;
+    width: 800px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+figure {
+    width: 250px;
+    margin: 10px 0;
+    background-color: white;
+    filter: drop-shadow(0px 1px 1px #60747c);
+}
+
+figcaption {
+    text-align: center;
+    padding: 10px;
+}
+
+img {
+    object-fit: cover;
+    width: 230px;
+    height: 230px;
+    display: block;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    filter: drop-shadow(0px 1px 1px #60747c);
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+  padding: 0;
+  margin: 0;
+}

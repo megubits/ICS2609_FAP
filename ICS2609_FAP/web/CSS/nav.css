@@ -1,0 +1,62 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : May 12, 2023, 8:30:25 AM
+    Author     : lenovo
+*/
+
+body{
+  margin: 0;
+  background: linear-gradient(#05bfdb, #00ffca);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/*navigation*/
+
+.navbar {
+  overflow: hidden;
+  background-color: #ffffff;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.navbar a {
+  display: inline-block;
+  color: #0a4d68;
+  text-align: center;
+  padding: 14px 26px;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: sans-serif;
+  margin: 0 auto;
+}
+
+.navbar a:hover {
+  background-image: linear-gradient(180deg, #088395, #0a4d68);
+  color: #ffffff;
+}
+
+.navbar a.active {
+  background-color: white;
+  color: #305c64;
+  border-radius: 25px;
+  margin-top: 10px;
+  padding: 5px 20px;
+  margin-right: 20px;
+  margin-left: 5px;
+}
+
+.top {
+  font-size: 40px;
+  font-family: sans-serif;
+  text-align: center;
+  color: #ffffff;
+  display:inline-block; 
+  width: 100%; 
+  height: 200px;
+  margin:0px;
+  background-image: linear-gradient(180deg, #0a4d68, #088395);
+}

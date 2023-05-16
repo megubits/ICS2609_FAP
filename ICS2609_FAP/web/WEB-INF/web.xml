@@ -42,7 +42,7 @@
     </servlet>
     <servlet>
         <servlet-name>LyricsPDFServlet</servlet-name>
-        <servlet-class>controllers.LyricsPDFServlet</servlet-class>
+        <servlet-class>controllers.PdfServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LogoutServlet</servlet-name>
@@ -59,6 +59,10 @@
     <servlet>
         <servlet-name>SongLink</servlet-name>
         <servlet-class>controllers.SongLink</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SignUp</servlet-name>
+        <servlet-class>controllers.SignUp</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -86,6 +90,10 @@
     <servlet-mapping>
         <servlet-name>SongLink</servlet-name>
         <url-pattern>/SongLink</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SignUp</servlet-name>
+        <url-pattern>/SignUp</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
