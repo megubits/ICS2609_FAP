@@ -23,13 +23,12 @@
                 String data = reader.nextLine();%>
         <p align="center"><font color="orange"> <%= data%></font></p>
             <%};
-
                 reader.close();
             %>
         <form action="SongLink" action="get">           
-            <input type="submit" align="center" name="songNo" value="1">
-            <input type="submit" align="center" name="songNo" value="2">
-            <input type="submit" align="center" name="songNo" value="3"> 
+            <input type="submit" align="center" name="songNo" value="SONG_1">
+            <input type="submit" align="center" name="songNo" value="SONG_2">
+            <input type="submit" align="center" name="songNo" value="SONG_3"> 
         </form>
 
         <form action="SongNav" action="get">

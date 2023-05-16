@@ -64,6 +64,10 @@
         <servlet-name>SignUp</servlet-name>
         <servlet-class>controllers.SignUp</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserFave</servlet-name>
+        <servlet-class>controllers.UserFave</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -94,6 +98,10 @@
     <servlet-mapping>
         <servlet-name>SignUp</servlet-name>
         <url-pattern>/SignUp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserFave</servlet-name>
+        <url-pattern>/UserFave</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

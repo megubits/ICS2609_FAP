@@ -102,14 +102,29 @@ public class SongDisplayer extends HttpServlet {
 
         try {
             if (conn != null) {
-                String querysong = "SELECT TITLE, ARTIST FROM SONGLIST WHERE NUMBER = ?";
+                String querysong = "SELECT TITLE, ARTIST_ID FROM SONGLIST WHERE SONG_ID = ?";
                 PreparedStatement pssongdet = conn.prepareStatement(querysong);
                 pssongdet.setString(1, (String) session.getAttribute("songNo"));
                 ResultSet details = pssongdet.executeQuery();
 
                 while (details.next()) {
                     session.setAttribute("title", details.getString("TITLE"));
-                    session.setAttribute("artist", details.getString("ARTIST"));
+                    session.setAttribute("artist", details.getString("ARTIST_ID"));
+                }
+            }
+        } catch (SQLException sqle) {
+            System.out.println("no connection :(");
+        }
+        
+        try {
+            if (conn != null) { 
+                String querysong = "SELECT ARTIST_NAME FROM ARTISTS WHERE ARTIST_ID = ?";
+                PreparedStatement psartistdet = conn.prepareStatement(querysong);
+                psartistdet.setString(1, (String) session.getAttribute("artist"));
+                ResultSet details = psartistdet.executeQuery();
+
+                while (details.next()) {
+                    session.setAttribute("artist", details.getString("ARTIST_NAME"));
                 }
             }
         } catch (SQLException sqle) {
