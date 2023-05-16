@@ -4,7 +4,7 @@
     Author     : Isha Quingquing
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*" contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,7 +27,38 @@
 
         <div class="gallery">
 
+            <%
+                Connection conn;
+                Class.forName(config.getServletContext().getInitParameter("jdbcClassName"));
+                //System.out.println("jdbcClassName: " + config.getInitParameter("jdbcClassName"));
+                String username = config.getServletContext().getInitParameter("dbUserName");
+                String password = config.getServletContext().getInitParameter("dbPassword");
+                StringBuffer url = new StringBuffer(config.getServletContext().getInitParameter("jdbcDriverURL"))
+                        .append("://")
+                        .append(config.getServletContext().getInitParameter("dbHostName"))
+                        .append(":")
+                        .append(config.getServletContext().getInitParameter("dbPort"))
+                        .append("/")
+                        .append(config.getServletContext().getInitParameter("databaseName"));
+                conn
+                        = DriverManager.getConnection(url.toString(), username, password);
+
+                if (conn != null) {
+                    String queryartist = "SELECT ARTIST_ID, ARTIST_NAME FROM ARTISTS";
+                    PreparedStatement psartist = conn.prepareStatement(queryartist);
+                    ResultSet rsartist = psartist.executeQuery();
+                    while (rsartist.next()) { %>
             <figure>
+                <a href="ArtistPage.jsp?artistID=<%=rsartist.getString("ARTIST_ID")%>">
+                    <img src="IMG/<%=rsartist.getString("ARTIST_ID")%>.jpg" width="100%">
+                    <figcaption><%=rsartist.getString("ARTIST_NAME")%></figcaption>
+                </a>
+            </figure>
+            <%    }
+                        psartist.close();
+                    }%>
+
+            <!-- <figure>
                 <a href="">
                     <img src="IMG/mcr.jpg" width="100%">
                     <figcaption>MY CHEMICAL ROMANCE</figcaption>
@@ -67,7 +98,7 @@
                     <img src="IMG/taylorswift.jpg" width="100%">
                     <figcaption>TAYLOR SWIFT</figcaption>            
                 </a>
-            </figure>
+            </figure> -->
         </div>
     </body>
 </html>

@@ -9,15 +9,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Member Page</title>
     </head>
     <body>
+        <img src="IMG/ProfilePictures/<%=session.getAttribute("userid")%>.jpg" width="100%">
         <h1>Welcome back, <%=session.getAttribute("username")%></h1>
         <form action="SongLink" action="get">
-            <input type="submit" align="center" name="songNo" value="1">
-        <!-- </form>
-        <form action="SongDisplayer" action="get">-->
-            <input type="submit" align="center" name="songNo" value="2">
+            <input type="submit" align="center" name="songNo" value="SONG_1">
+            <input type="submit" align="center" name="songNo" value="SONG_2">
+        </form>
+        <form action="SongLink" action="get">
+            <input type="submit" align="center" name="songNo" value="SONG_1">
+            <input type="submit" align="center" name="songNo" value="SONG_2">
         </form>
     </body>
 </html>

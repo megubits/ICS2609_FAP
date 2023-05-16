@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package controllers;
 
 import java.io.*;
@@ -12,12 +8,8 @@ import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
 import org.apache.commons.codec.binary.*;
 
-/**
- *
- * @author Isha Quingquing
- */
 public class LoginServlet extends HttpServlet {
-    
+
     /*private static byte[] key = {'i', 'c', 's', '_', '2', '6', '0', '9', 'i', 'c', 's', '_', '2', '6', '0', '9',};*/
     Connection conn;
     int attempt = 0;
@@ -53,24 +45,26 @@ public class LoginServlet extends HttpServlet {
                     + nfe.getMessage());
         }
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        HttpSession session = request.getSession();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String passwordConfirm = "x";
-        String userroleConfirm = "x";
         String decryptedString = null;
 
         try {
             if (conn != null) {
-                String querypassword = "SELECT PASSWORD FROM USERS WHERE EMAIL = ?";
+                String querypassword = "SELECT PASSWORD, USER_ID FROM USERS WHERE EMAIL = ?";
                 PreparedStatement pspassword = conn.prepareStatement(querypassword);
                 pspassword.setString(1, username);
                 ResultSet rspassword = pspassword.executeQuery();
                 while (rspassword.next()) {
                     passwordConfirm = rspassword.getString("Password");
+                    session.setAttribute("userid", rspassword.getString("USER_ID"));
                 }
 
                 pspassword.close();
@@ -90,17 +84,15 @@ public class LoginServlet extends HttpServlet {
             System.err.println(e.getMessage());
         }
 
-        HttpSession session = request.getSession();
         boolean passwordTrial = password.equals(decryptedString);
 
         if (passwordTrial == true) {
             if (attempt >= 2) {
                 response.sendRedirect("ThreeErrorPassword.jsp");
             } else {
-                session.setAttribute("username", username);
+                session.setAttribute("username",username);
                 response.sendRedirect("MemberAccount.jsp");
             } 
-            
         } else {
             if (attempt >= 2){
                 response.sendRedirect("ThreeErrorPassword.jsp");
@@ -110,14 +102,14 @@ public class LoginServlet extends HttpServlet {
             else if (session.getAttribute("counter") == null){
                 attempt = 1;
                 session.setAttribute("counter", "1");
-                response.sendRedirect("ErrorPassword.jsp");
+                /*response.sendRedirect("ErrorPassword.jsp");*/
                 System.out.println(session.getAttribute("counter") + " " + attempt);
             }
             
             else {
                 attempt++;
                 session.setAttribute("counter", attempt);
-                response.sendRedirect("ErrorPassword.jsp");
+                /*response.sendRedirect("ErrorPassword.jsp");*/
                 System.out.println(session.getAttribute("counter") + " " + attempt);
             }
         }
