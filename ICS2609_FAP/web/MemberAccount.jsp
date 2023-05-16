@@ -12,6 +12,12 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Welcome back, <%=session.getAttribute("username")%></h1>
+        <form action="SongLink" action="get">
+            <input type="submit" align="center" name="songNo" value="1">
+        <!-- </form>
+        <form action="SongDisplayer" action="get">-->
+            <input type="submit" align="center" name="songNo" value="2">
+        </form>
     </body>
 </html>

@@ -15,7 +15,7 @@
     <body>
         <div class="bothside" id="bothside">
             <div class="leftbody">
-                
+
             </div>
 
             <div class="rightbody">
@@ -36,20 +36,20 @@
                         </label>
                     </fieldset>
                     <div class="center">
-                    <img src="CaptchaServlet" class="captcha">
+                        <img src="CaptchaServlet" class="captcha">
                     </div>
-                    
+
                     <fieldset>
                         <label for="answer"> Type the Captcha
                             <input id="answer" name="answer" type="answer" required />
                         </label>
                     </fieldset>
-                    
+
                     <input type="submit" name="submit" value="Sign Up" class="submit"/>
-                    
+
                 </form>
 
-                
+
             </div>
 
         </div>

@@ -16,6 +16,7 @@
         <h2><%=session.getAttribute("artist")%></h2>
         <% try {
                 File songLyrics = new File("C:/Users/Isha Quingquing/Documents/NetBeansProjects/ICS2609_FAP/SongLyrics/" + session.getAttribute("songNo") + ".txt");
+                System.out.println(new File(".").getAbsolutePath());
                 Scanner reader = new Scanner(songLyrics);
 
                 while (reader.hasNextLine()) {
@@ -36,6 +37,10 @@
         <form action="SongNav" action="get">
             <input type="submit" align="center" name="songDirect" value="goback">
             <input type="submit" align="center" name="songDirect" value="goforward">
+        </form>
+                    
+        <form action="LyricsPDFServlet" action="get">
+            <input type="submit" align="center" value="Print Lyrics!">
         </form>
     </body>
 </html>
