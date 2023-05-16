@@ -40,8 +40,8 @@ public class PdfServlet extends HttpServlet {
 
             doc.open();
             Paragraph paragraph = null;
-            File songLyrics = new File("C:/Users/Isha Quingquing/Documents/NetBeansProjects/ICS2609_FAP/SongLyrics/" + session.getAttribute("songNo") + ".txt");
-            Scanner reader = new Scanner(songLyrics);
+            InputStream file = getServletContext().getResourceAsStream("/WEB-INF/SongLyrics/" + session.getAttribute("songNo") + ".txt");
+            Scanner reader = new Scanner(file);
 
             paragraph = new Paragraph((String) session.getAttribute("title"));
             doc.add(paragraph);
