@@ -39,5 +39,7 @@
         <form action="LyricsPDFServlet" action="get">
             <input type="submit" align="center" value="Print Lyrics!">
         </form>
+        
+        <a href="MemberLanding.jsp">Main Page</a>
     </body>
 </html>

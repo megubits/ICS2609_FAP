@@ -18,9 +18,14 @@
 
             </div>
 
-            <div class="rightbody">
+            <div class="rightbody" >
                 <h3>Sign Up</h3>
-                <form action="">
+                <% if (session.getAttribute("warningSignUp") != null) {%>
+                <p align="center"><font color="red"><%=session.getAttribute("warningSignUp")%></font></p>
+                    <%} else if (session.getAttribute("approvedSignUp") != null) {%>
+                <p align="center"><font color="green"><%=session.getAttribute("approvedSignUp")%></font></p>
+                    <%}%>
+                <form action="SignUp" method="post">
                     <fieldset>
                         <label for="username">Username
                             <input id="username" name="username" type="text" required />
@@ -41,14 +46,15 @@
 
                     <fieldset>
                         <label for="answer"> Type the Captcha
-                            <input id="answer" name="answer" type="answer" required />
+                            <input id="answer" name="captchaGuess" type ="text" required />
                         </label>
                     </fieldset>
 
                     <input type="submit" name="submit" value="Sign Up" class="submit"/>
 
                 </form>
-
+                
+                <a href="LoginPage.jsp"> Or, Log-In to your Account. </a> 
 
             </div>
 
