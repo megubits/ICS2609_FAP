@@ -31,7 +31,7 @@
             if (conn != null) {
                 String queryartistsongs = "SELECT TITLE, SONG_ID FROM SONGLIST WHERE ARTIST_ID = ?";
                 PreparedStatement psartistsongs = conn.prepareStatement(queryartistsongs);
-                psartistsongs.setString(1, request.getParameter("artistID"));
+                psartistsongs.setString(1, (String) session.getAttribute("artistID"));
                 ResultSet rsartistsongs = psartistsongs.executeQuery();
                 while (rsartistsongs.next()) {%>
         <a href=SongLink?songNo=<%=rsartistsongs.getString("SONG_ID")%>>
@@ -43,7 +43,7 @@
         <%    }
                     psartistsongs.close();
                 }%>    
-
+                
         <h1>Hello World!</h1>
     </body>
 </html>

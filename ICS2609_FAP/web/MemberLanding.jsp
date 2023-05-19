@@ -22,7 +22,12 @@
             <a href="PublicLanding.jsp">Artists</a>
             <a href="about.jsp">About</a>
             <a href="developers.jsp">Developers</a>
-            <a href="">Log Out</a>
+            <%if (session.getAttribute("userid") == null) {%>
+            <a href="SignUp.jsp">Sign-Up</a>
+            <%} else if (session.getAttribute("userid") != null) {%>
+            <a href="LogoutServlet">Logout</a>
+            <%}%>
+
         </div>
 
         <div class="gallery">
@@ -47,16 +52,16 @@
                     String queryartist = "SELECT ARTIST_ID, ARTIST_NAME FROM ARTISTS";
                     PreparedStatement psartist = conn.prepareStatement(queryartist);
                     ResultSet rsartist = psartist.executeQuery();
-                    while (rsartist.next()) { %>
+                    while (rsartist.next()) {%>
             <figure>
-                <a href="ArtistPage.jsp?artistID=<%=rsartist.getString("ARTIST_ID")%>">
+                <a href="ArtistPage?artistID=<%=rsartist.getString("ARTIST_ID")%>">
                     <img src="IMG/<%=rsartist.getString("ARTIST_ID")%>.jpg" width="100%">
                     <figcaption><%=rsartist.getString("ARTIST_NAME")%></figcaption>
                 </a>
             </figure>
             <%    }
-                        psartist.close();
-                    }%>
+                    psartist.close();
+                }%>
 
             <!-- <figure>
                 <a href="">

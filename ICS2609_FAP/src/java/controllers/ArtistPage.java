@@ -12,16 +12,12 @@ import javax.servlet.http.*;
  *
  * @author Isha Quingquing
  */
-public class LogoutServlet extends HttpServlet {
-
+public class ArtistPage extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         HttpSession session = request.getSession();
-        session.invalidate();
-        response.sendRedirect("MemberLanding.jsp");
-        
+        session.setAttribute("artistID",request.getParameter("artistID"));
+        response.sendRedirect("ArtistPage.jsp");
     }
-
 }

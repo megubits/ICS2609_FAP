@@ -55,11 +55,27 @@ public class UserFave extends HttpServlet {
         } else if (session.getAttribute("userid") != null) {
             try {
                 if (conn != null) {
+                    String table = (String) session.getAttribute("userid") + "_FAVES";
+
+                    DatabaseMetaData dbm = conn.getMetaData();
+                    ResultSet tables = dbm.getTables(null, null, table, null);
+
+                    if (!tables.next()) {
+                        Statement querytableadd = conn.createStatement();
+                        querytableadd.executeUpdate("CREATE TABLE " + table + "(SONG_ID VARCHAR(200))");
+                        querytableadd.close();
+                    }
+                    
                     Statement queryfaveadd = conn.createStatement();
                     queryfaveadd.executeUpdate("INSERT INTO "
                             + (String) session.getAttribute("userid") + "_FAVES"
                             + " VALUES('" + (String) request.getParameter("songFaveId") + "')");
+                    queryfaveadd.close();
+                    
+                    response.sendRedirect("ArtistPage.jsp");
 
+                } else {
+                    System.out.println("no connection :(");
                 }
             } catch (SQLException sqle) {
                 System.out.println("no connection :(");
@@ -68,16 +84,3 @@ public class UserFave extends HttpServlet {
         System.out.println(request.getParameter("songFaveId") + " " + session.getAttribute("userid") + "_FAVES");
     }
 }
-/*try {
-                if (conn != null) {
-                    String queryfaveadd = "INSERT INTO ? VALUES(?)";
-                    PreparedStatement psfaveadd = conn.prepareStatement(queryfaveadd);
-                    psfaveadd.setString(1, useridfaves);
-                    psfaveadd.setString(2, (String) request.getParameter("songFaveId"));
-                    psfaveadd.executeQuery();
-                    psfaveadd.close();
-                }
-            } catch (SQLException sqle) {
-                System.out.println("no connection :(");
-            }
-        }*/
