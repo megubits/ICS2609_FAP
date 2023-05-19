@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,47 +19,38 @@
 
             </div>
 
-            <div class="rightbody" >
+            <div class="rightbody">
                 <h3>Sign Up</h3>
-                <% if (session.getAttribute("warningSignUp") != null) {%>
-                <p align="center"><font color="red"><%=session.getAttribute("warningSignUp")%></font></p>
-                    <%} else if (session.getAttribute("approvedSignUp") != null) {%>
-                <p align="center"><font color="green"><%=session.getAttribute("approvedSignUp")%></font></p>
-                    <%}%>
-                <form action="SignUp" method="post">
+                <form action="">
                     <fieldset>
-                        <label for="username">Username
-                            <input id="username" name="username" type="text" required />
-                        </label>
-                        <label for="reusername">Re-type Username
+                        <label for="username">Username</label>
+                            <input id="username" name="username" type="text" required /> 
+                        <label for="reusername">Re-type Username</label>
                             <input id="reusername" name="reusername" type="text" required />
-                        </label>
-                        <label for="password">Password
+                        <label for="password">Password</label>
                             <input id="password" name="password" type="password" required />
-                        </label>
-                        <label for="repassword">Re-type Password
+                        <label for="repassword">Re-type Password</label>
                             <input id="repassword" name="repassword" type="password" required />
-                        </label>
                     </fieldset>
+
                     <div class="center">
                         <img src="CaptchaServlet" class="captcha">
                     </div>
 
                     <fieldset>
-                        <label for="answer"> Type the Captcha
-                            <input id="answer" name="captchaGuess" type ="text" required />
-                        </label>
+                        <label for="answer">Type the Captcha</label>
+                            <input id="answer" name="answer" type="answer" required />
                     </fieldset>
 
                     <input type="submit" name="submit" value="Sign Up" class="submit"/>
 
                 </form>
-                
-                <a href="LoginPage.jsp"> Or, Log-In to your Account. </a> 
+
 
             </div>
 
         </div>
     </body>
 </html>
+
 

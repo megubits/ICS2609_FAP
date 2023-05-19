@@ -48,6 +48,9 @@ h3 {
     text-align: center;
     margin-top: 80px;
     margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 50%;
 }
 
 
@@ -55,15 +58,22 @@ h3 {
 
 fieldset {
     border: none;
-    padding-left: 60px;
+padding-right: auto;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 25%;
+    height: 100%;
+    text-align: center;
 }
 
 label {
     display: block;
-    width: auto;
+    min-width: auto;
     position: relative;
-    margin-left: 170px;
-    margin-bottom: 20px;
+    padding-left: 24.5%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
 
     font-size: 17px;
     font-family: sans-serif;
@@ -74,8 +84,12 @@ label {
 
 #username, #reusername, #password, #repassword, #answer {
     display: block;
-    width: 295px;
+    min-width: 50%;
+    height: auto;
+    margin-left: auto;
     margin-right: auto;
+margin-bottom: 20px;
+    vertical-align: middle;
     color: #0a4d68;
 }
 
@@ -84,17 +98,17 @@ label {
 
 .submit {
     display: block;
-    width: 295px;
-    height: 30px;
+    height: auto;
     margin-top: 20px;
     margin-right: auto;
-    margin-left: 235px;
+    margin-left: auto;
     font-size: 20px;
     background-color: #05bfdb;
     border-color: transparent;
-    min-width: 295px;
+    min-width: 40%;
     color: white;
     text-align: center;
+    vertical-align: middle;
     text-decoration: none;
 }
 
